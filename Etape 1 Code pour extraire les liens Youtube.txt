@@ -1,0 +1,18 @@
+// Get all links on the page
+var links = document.querySelectorAll('a');
+
+// Set to store filtered links and avoid duplicates
+var filteredLinks = new Set();
+
+// Iterate over the links and add their URLs if they contain 'https://www.youtube.com/watch' but do not contain '&t='
+links.forEach(function(link) {
+    if (link.href.includes('https://www.youtube.com/watch') && !link.href.includes('&t=')) {
+        filteredLinks.add(link.href);
+    }
+});
+
+// Convert the set of links into an array and join them into a single string.
+var linksText = Array.from(filteredLinks).join('\n');
+
+// Print filtered links in the browser console
+console.log("Youtube Links\n\n" + linksText);
